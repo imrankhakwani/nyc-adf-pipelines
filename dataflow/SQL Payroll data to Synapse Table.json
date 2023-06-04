@@ -1,5 +1,5 @@
 {
-	"name": "ADL Payroll data to Synapse Table",
+	"name": "SQL Payroll data to Synapse Table",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
