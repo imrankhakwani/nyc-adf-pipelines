@@ -23,9 +23,15 @@
 			"transformations": [
 				{
 					"name": "union1"
+				},
+				{
+					"name": "filter1"
 				}
 			],
 			"scriptLines": [
+				"parameters{",
+				"     fiscalyear as integer",
+				"}",
 				"source(output(",
 				"          FiscalYear as integer,",
 				"          PayrollNumber as integer,",
@@ -75,7 +81,8 @@
 				"     allowSchemaDrift: false,",
 				"     validateSchema: true,",
 				"     ignoreNoFilesFound: false) ~> ADLNYCPayrollHist",
-				"NYCPayrollDataSQL, ADLNYCPayrollHist union(byName: true)~> union1"
+				"NYCPayrollDataSQL, ADLNYCPayrollHist union(byName: true)~> union1",
+				"union1 filter(toInteger(FiscalYear) >= $dataflow_param_fiscalyear) ~> filter1"
 			]
 		}
 	}
