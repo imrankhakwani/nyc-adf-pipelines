@@ -26,6 +26,12 @@
 				},
 				{
 					"name": "filter1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -82,7 +88,10 @@
 				"     validateSchema: true,",
 				"     ignoreNoFilesFound: false) ~> ADLNYCPayrollHist",
 				"NYCPayrollDataSQL, ADLNYCPayrollHist union(byName: true)~> union1",
-				"union1 filter(toInteger(FiscalYear) >= $fiscalyear) ~> filter1"
+				"union1 filter(toInteger(FiscalYear) >= $fiscalyear) ~> filter1",
+				"filter1 derive(TotalPaid = toInteger(RegularGrossPaid) + toInteger(TotalOTPaid) + toInteger(TotalOtherPay)) ~> derivedColumn1",
+				"derivedColumn1 aggregate(groupBy(AgencyName,",
+				"          FiscalYear)) ~> aggregate1"
 			]
 		}
 	}
