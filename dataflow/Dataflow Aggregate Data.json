@@ -82,7 +82,7 @@
 				"     validateSchema: true,",
 				"     ignoreNoFilesFound: false) ~> ADLNYCPayrollHist",
 				"NYCPayrollDataSQL, ADLNYCPayrollHist union(byName: true)~> union1",
-				"union1 filter(toInteger(FiscalYear) >= $dataflow_param_fiscalyear) ~> filter1"
+				"union1 filter(toInteger(FiscalYear) >= $fiscalyear) ~> filter1"
 			]
 		}
 	}
