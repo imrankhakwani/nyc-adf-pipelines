@@ -5,17 +5,11 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"fiscalyear": {
-				"type": "int"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "nycpayroll_2020.csv",
 				"folderPath": "dirhistoryfiles",
 				"fileSystem": "adlsnycpayroll-imran-saeed"
 			},
